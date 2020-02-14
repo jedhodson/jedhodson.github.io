@@ -1,0 +1,111 @@
+<head>
+<style>
+@font-face {
+  font-family: 'CircularStd';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('CircularStd Black'), local('CircularStd-Black'), url(https://github.com/sudouc/sudo.org.au/blob/master/sudo-global/fonts/CircularStd-Black.woff) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+html, body {
+  margin:0;
+  height: 100%;
+font-family: 'CircularStd', sans-serif;
+}
+body {
+  background: url("https://www.canberra.edu.au/__data/assets/image/0011/1535456/dell-servers.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow:hidden;
+	opacity: 0.9;
+}
+#gradient-overlay {
+  background: rgb(252,53,76);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(rgb(252,53,76), rgb(10,191,188));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(rgb(252,53,76), rgb(10,191,188)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index:10;
+}
+.centering-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#logo {
+  position:relative;
+  width: 200px;
+  z-index:20;
+  background: rgba(55,55,55,0.5);
+  border-radius: 3px;
+  img {
+    width: 100%;
+  }
+}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="gradient-overlay" style="background: linear-gradient(0deg, rgb(145, 26, 255), rgb(61, 193, 255));">
+<div class="centering-container">
+<div>
+    <h1 style="
+    font-size: 15em;
+    font-weight: 100;
+    color: #ffffff;
+    text-shadow: 0 0 23px #00000030;
+    margin: 0;
+    height: 1em;
+">Sudo</h1><h2 style="
+    color: #fff;
+    font-weight: 100;
+    text-align: center;
+    font-size: 2.8em;
+    opacity: 0.9;
+    margin: 0;
+    visibility: visible;
+">sudouc.getqpay.com</h2>
+    </div>
+</div>
+</div>
+</body>
+
+<script>
+var target = $("#gradient-overlay");
+console.log(target);
+var deg = 0;
+var red1 = {val:145, inc:"pos"};
+var green1 = {val:26, inc:"neg"};
+var blue1 = {val:255, inc:"pos"};
+var red2 = {val:61, inc:"neg"};
+var green2 = {val:193, inc:"pos"};
+var blue2 = {val:255, inc:"neg"};
+
+setInterval(function() {
+  target.css("background", "linear-gradient("+ deg +"deg,rgb("+red1.val+","+green1.val+","+blue1.val+"),rgb("+red2.val+","+green2.val+","+blue2.val+"))");
+  cycleColorVals(red1);
+  cycleColorVals(green1);
+  cycleColorVals(blue1);
+  cycleColorVals(red2);
+  cycleColorVals(green2);
+  cycleColorVals(blue2);
+  if (deg === 360) {
+    deg = 1;
+  } else {
+    deg++;
+  }
+}, 70);
+
+function cycleColorVals(colorObj) {
+  if (colorObj.val === 255) colorObj.inc = "neg";
+  if (colorObj.val === 0) colorObj.inc = "pos";
+  if (colorObj.inc === "neg") colorObj.val--;
+  if (colorObj.inc === "pos") colorObj.val++;
+}
+
+</script>
